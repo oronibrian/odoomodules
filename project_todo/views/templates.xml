@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="assets_backend" name="project_todo assets" inherit_id="web.assets_backend">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/project_todo/static/src/js/project_todo.js"></script>
+			<link rel="stylesheet" href="/project_todo/static/src/css/project_todo.css"/>
+		</xpath>
+	</template>
+	
+	<!-- tree view -->	
+	<record id="tree_todos" model="ir.ui.view">
+		<field name="name">All Todos</field>
+		<field name="model">project.todo</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="user" />
+				<field name="todo_type" />
+			</tree>
+		</field>
+	</record>
+
+	<!-- Minimal form view a record of type ir.ui.view -->
+	<record id="form_todos" model="ir.ui.view">
+		<field name="name">Todo</field>
+		<field name="model">project.todo</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="name" />
+					<field name="user" />
+					<field name="todo_type" />
+					<field name="deadline" />
+					<field name="days_left" />
+					<field name="is_urgent" />
+					<field name="todo_type_importance"/>
+				</group>
+				<group>
+					<field name="text_todo" />
+				</group>
+			</form>
+		</field>
+	</record>
+
+	<act_window id="show_todo_list"
+		name="todos"
+		res_model="project.todo"
+		view_mode="list,form"
+		/>
+
+	<menuitem id="todo_menu"
+		parent="project.menu_main_pm" 
+		action="show_todo_list"		
+		/>
+
+</odoo>

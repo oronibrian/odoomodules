@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_detail_open" model="ir.actions.act_window">
+            <field name="name">Detail</field>
+            <field name="res_model">detail.detail</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <record id="view_detail_search" model="ir.ui.view">
+            <field name="name">Detail Search</field>
+            <field name="model">detail.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <!--<group>-->
+                    <!--<filter string="Parent" context="{'group_by': 'parent_id'}"/>-->
+                    <!--</group>-->
+                </search>
+            </field>
+        </record>
+
+        <record id="view_detail_tree" model="ir.ui.view">
+            <field name="name">Detail Tree</field>
+            <field name="model">detail.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="content"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_detail_main" model="ir.actions.act_window">
+            <field name="name">Oronz</field>
+            <field name="res_model">detail.detail</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+
+        </record>
+
+        <menuitem id="detail_menu" name="Oronz"/>
+
+        <menuitem id="menu_details"
+                  action="action_detail_main"
+                  web_icon="OronzCRUD,static/description/icon.png"/>
+
+    </data>
+</odoo>
